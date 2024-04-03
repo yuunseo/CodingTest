@@ -2,16 +2,18 @@ import java.util.*;
 
 class Solution {
     public String solution(String[] participant, String[] completion) {
-        // 완주자 명단에서 선수를 비교하기 위해 List로 변경
-        List<String> strList = new ArrayList<>(Arrays.asList(completion));
-        // 참여 선수 명단에 한 명씩 접근하면서,
-        for(String name: participant){ 
-            // 만약, 완주자 명단에 선수 이름이 있다면 제외
-            if(strList.contains(name)) strList.remove(name);
-            else{ // 완주자 명단에 선수 이름이 없다면 return
-                return name;
-            }
+        // 각 배열들끼리 원소 비교를 위해, 정렬
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+
+        for(int i=0; i<completion.length; i++){
+            // 1. 정렬한 값들이 서로 다른 값과 매칭될 때, return
+            if(participant[i].equals(completion[i])) continue;
+            else return participant[i];
         }
-        return "";
+        // 2. participant가 하나 남을 때, return
+        return participant[participant.length-1];
+
+
     }
 }
