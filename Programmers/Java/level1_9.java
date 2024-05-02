@@ -6,19 +6,18 @@ class Solution {
         StringBuilder str = new StringBuilder();
         for(int num: ingredient){
             str.append(num);
+            //1-2-3-1 순서가 발견되면, count++ 후 햄버거로 탈출
+            if(str.length()>3) {                             
+                if(str.charAt(str.length()-1) == '1' &&      
+                   str.charAt(str.length()-2) == '3' &&       
+                   str.charAt(str.length()-3) == '2' &&      
+                   str.charAt(str.length()-4) == '1') {
+                    count+=1;
+                    str = new StringBuilder(str.substring(0, str.length()-4)); 
+                    }
+                }
         }
-        String string = str.toString();
-        
-        //재료들 중 올바른 순서대로 쌓았다면 count++하고, 햄버거로 탈출
-        while(true){
-            if(string.contains("1231")){
-                count+=1;
-                string = string.substring(0,string.indexOf("1231") )+string.substring(string.indexOf("1231")+4 );
-            }else{
-                break;
-            }
-        }
-        
+    
         return count;
     }
 }
