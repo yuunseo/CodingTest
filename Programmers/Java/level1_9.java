@@ -13,7 +13,7 @@ class Solution {
         while(true){
             if(string.contains("1231")){
                 count+=1;
-                string = string.replace("1231","");
+                string = string.substring(0,string.indexOf("1231") )+string.substring(string.indexOf("1231")+4 );
             }else{
                 break;
             }
