@@ -9,7 +9,7 @@ public class Main {
         
         for(int i=0; i<case_num; i++){
             int num = scanner.nextInt();
-            String str = scanner.nextLine().trim();
+            String str = scanner.next();
 
             for(int j=0; j<str.length(); j++){
                 for(int k=0; k<num; k++){
